@@ -1,0 +1,17 @@
+Dependency Injection
+    DI makes classes loosely coupled.This means that the creation of client dependencies is separated from the client's behavior.
+    which makes unit testing easier.
+
+    There are different types of DI, for example, the following two types
+
+    1. Constructor Injection
+        Dependencies are passed to a client class constructor.
+    2. Setter Injection
+        Dependencies are provided through setters.
+
+DI in Spring Boot
+    Spring Boot scans your application classes and register classes with certain annotations (@Service, @Repository, @Controller) as Spring Beans.
+    This beans can be injected using an @Autowired annotation
+
+
+    Java provides @Resource anotation that can be used to inject resources!
