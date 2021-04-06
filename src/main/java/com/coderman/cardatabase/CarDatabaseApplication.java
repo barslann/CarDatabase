@@ -1,16 +1,43 @@
 package com.coderman.cardatabase;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.coderman.cardatabase.domain.Car;
+import com.coderman.cardatabase.domain.Owner;
+import com.coderman.cardatabase.repo.CarRepository;
+import com.coderman.cardatabase.repo.OwnerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class CarDatabaseApplication {
-    private static final Logger LOGGER = LoggerFactory.getLogger(CarDatabaseApplication.class);
+
+    @Autowired
+    private CarRepository carRepository;
+
+    @Autowired
+    private OwnerRepository ownerRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(CarDatabaseApplication.class, args);
-        LOGGER.info("Application started!");
+    }
+
+    @Bean
+    CommandLineRunner runner(){
+        return args -> {
+
+            Owner owner1 = new Owner("Beck", "Ars");
+            Owner owner2 = new Owner("Moon", "Koo");
+            ownerRepository.save(owner1);
+            ownerRepository.save(owner2);
+
+
+            carRepository.save(new Car("Ford", "Mustang", "Red", "ADF-1121",2017,59000,owner1));
+            carRepository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002",2015,25000,owner2));
+            carRepository.save(new Car("Toyota", "Camry", "Silver", "KKO-0212",2020,30000,owner2));
+
+        };
     }
 
 }
@@ -41,13 +68,8 @@ public class CarDatabaseApplication {
 
 
 
-
-      Server
-        Spring Boot uses the Apache Tomcat as an application server by default! As a default, Tomcat is running on port 8080.
-        We can change the port in the application.properties file.
-            server.port = 8081 _> this will start Tomcat on port 8081!
-
-        If the port is occupied, the application wont start!
+     CommandLineRunner
+        allows us to execute additonal code before the application has fully started.
 
 
 
