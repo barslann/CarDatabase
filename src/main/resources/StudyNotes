@@ -43,4 +43,23 @@ Basics of ORM, JPA, and Hibernate
 
     Hibernate is the most popular JAVA-based JPA implementation, adn is used in Spring boot as a default.
 
+Basics of REST
+    Representational State Transfer(REST) is an architectural style for creating web services. REST is not standard but it defines a set of constraints defined by Roy Fielding.
+    The six constraints
+        1.Stateless -> The server doesnt hold any information about the client state
+        2.Client Server -> The client and server act independently. The server does not send any information without a request from the client
+        3.Cacheable-> Many clients often request the same resources;therefore, it is useful to cache responses in order to improve performance.
+        4. Uniform Interface -> Requests from different clients look the same. Clients may include for example, a browser, a JAva application and a mobile application
+        5. Layered System -> REST allows us to use a layered system architecture
+        6.Code on demands -> This is an optional constraint.
 
+    The uniform interface is an important constraint and it stipulates that every REST architecture should have the following elements.
+        1. Identification of Resources -> There are resources with their unique identifiers, for example, URIs in web based REST services.
+        REST resources should expose easily understood directory structure URIs.Therefore, a good resource namin strattegy is important.
+
+        2. Resource manipulation through representation -> When making a request to a resource, the server responds with a representation of the resource.
+        Typically, the format of the representation is JSON or XML
+
+        3. Self descriptive messages.
+
+        4. Hypermedia and the Engine of Application State(HATEOAS): Responses can contain links to other areas of service.
