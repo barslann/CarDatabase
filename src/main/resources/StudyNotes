@@ -63,3 +63,14 @@ Basics of REST
         3. Self descriptive messages.
 
         4. Hypermedia and the Engine of Application State(HATEOAS): Responses can contain links to other areas of service.
+
+Spring Data REST
+    It offers and easy and fast way to implement RESTful web services with Soring
+    By default, Spring Data REST finds all public repositories from the application and creates RESTful web services for your entities automatically.
+
+    We can define the endpoint of service in our applicaton.properties file as follows:
+        spring.data.rest.basePath = /api
+
+    Now, we can access the RESTful web service from the localhost:8080/api endpoint. By calling the root endpoint of the service, it returns the resources that are available
+    Spring Data REST returns json data in the Hypertext Application Language(HAL) format. The HAL provides a set of conventions for expressing  hyperlinks in JSON and it makes
+    our RESTful web service easier to use for frontend developers

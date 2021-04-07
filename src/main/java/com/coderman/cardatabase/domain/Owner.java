@@ -1,6 +1,7 @@
 package com.coderman.cardatabase.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -70,13 +71,13 @@ public class Owner {
     This class has a one to many relationship with the Car table!The owner can own multiple cars, but a car can have only one owner!
 
 
-    One to Many relationsship can be added by using @ManyToOne and @oneToMany annotations.
+    One to Many relationship can be added by using @ManyToOne and @oneToMany annotations.
      In  the car entity class, which contains a foreign key, you will define the relationship with the @manyToone.We should also add getters and setter for this field
      It is recommended that we use Fetch.LAZY for all associations. For toMany relationships, that is the default value, but
      the toOne relationships, we should define the it. FetchType defines the strategy for fetching data from the database
      the value can be either EAGER or LAZY.
         LAZY -> when the owner is fetched from the database, all the cars associated with the owner will be fetched when needed.
-        EAGER -> the cars will eb fetched immediately with the owner.
+        EAGER -> the cars will be fetched immediately with the owner.
 
 
      CascadeType.ALL ->this attribute setting means that if the owner is deleted, the cars linked to that owner are deleted as well.

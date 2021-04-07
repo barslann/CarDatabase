@@ -3,12 +3,25 @@ package com.coderman.cardatabase.repo;
 import com.coderman.cardatabase.domain.Car;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+//@Repository
+@RepositoryRestResource
 public interface CarRepository extends CrudRepository<Car, Long> {
+
+    //Fetch cars by brand with @RepositoryRestResource
+    List<Car> findByBrand(@Param("brand") String brand);
+
+    //Fetch cars by color with @RepositoryRestResource
+    List<Car> findByColor(@Param("color") String color);
+
+
+
+
     // We can define our own queries in the Spring dAta repositories.
     //The query must start with a prefix, for example, findBy.
     // After the prefix, we can define the entity class fields that are used in the query

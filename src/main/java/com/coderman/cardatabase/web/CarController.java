@@ -13,8 +13,8 @@ public class CarController {
     private CarRepository carRepository;
 
     // this method returns all the car objects, which are the marshalled to JSON objects by Jackson Library
-    @RequestMapping("/cars")
-    public Iterable<Car> getCars(){
-        return carRepository.findAll();
-    }
+//    @RequestMapping("/cars")
+//    public Iterable<Car> getCars(){
+//        return carRepository.findAll();
+//    }
 }
