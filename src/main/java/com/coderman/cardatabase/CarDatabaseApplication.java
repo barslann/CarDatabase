@@ -5,10 +5,14 @@ import com.coderman.cardatabase.domain.Owner;
 import com.coderman.cardatabase.repo.CarRepository;
 import com.coderman.cardatabase.repo.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+
+import java.io.PrintStream;
 
 @SpringBootApplication
 public class CarDatabaseApplication {
@@ -20,7 +24,16 @@ public class CarDatabaseApplication {
     private OwnerRepository ownerRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(CarDatabaseApplication.class, args);
+//        SpringApplication.run(CarDatabaseApplication.class, args);
+        SpringApplication springApplication = new SpringApplication(CarDatabaseApplication.class);
+        springApplication.setBanner(new Banner() {
+            @Override
+            public void printBanner(Environment environment, Class<?> sourceClass, PrintStream out) {
+                out.print("\n\n\t This is my own banner!\n\n".toUpperCase());
+            }
+        });
+
+        springApplication.run(args);
     }
 
     @Bean

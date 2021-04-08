@@ -74,3 +74,13 @@ Spring Data REST
     Now, we can access the RESTful web service from the localhost:8080/api endpoint. By calling the root endpoint of the service, it returns the resources that are available
     Spring Data REST returns json data in the Hypertext Application Language(HAL) format. The HAL provides a set of conventions for expressing  hyperlinks in JSON and it makes
     our RESTful web service easier to use for frontend developers
+
+Spring Security
+    Spring security provides security services for java based web applications. By default, spring security enables the following features
+        -An AuthenticationManager bean with an in memory single user. The username is user and the password is printed on the console output.
+        -Ignored paths for common static resource locations such as /css and /images
+        -Http basic security for all other endpoints.
+        -Security events published on Spring's ApplicationEventPublisher
+        -Common low-level feature are on the by default(HSTS, XSS, CSRF, and so forth)
+
+    To configure how Spring security behaves, we have to add a new configuration class that extends WebSecurityConfigurerAdapter.
