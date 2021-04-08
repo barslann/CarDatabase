@@ -84,3 +84,7 @@ Spring Security
         -Common low-level feature are on the by default(HSTS, XSS, CSRF, and so forth)
 
     To configure how Spring security behaves, we have to add a new configuration class that extends WebSecurityConfigurerAdapter.
+
+    The user of in-memory users is good in the development phase, but the real application should save the users in the database.
+    To save the users to database, you have to create a user entity class and repository. Password shouldn't be saved to the database in plain text format.
+    Spring security provides multiple hashing algorithms, such as BCrypt, that you can use to hash passwords.
