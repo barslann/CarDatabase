@@ -2,8 +2,10 @@ package com.coderman.cardatabase;
 
 import com.coderman.cardatabase.domain.Car;
 import com.coderman.cardatabase.domain.Owner;
+import com.coderman.cardatabase.domain.User;
 import com.coderman.cardatabase.repo.CarRepository;
 import com.coderman.cardatabase.repo.OwnerRepository;
+import com.coderman.cardatabase.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -11,8 +13,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.PrintStream;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class CarDatabaseApplication {
@@ -22,6 +27,11 @@ public class CarDatabaseApplication {
 
     @Autowired
     private OwnerRepository ownerRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+
 
     public static void main(String[] args) {
 //        SpringApplication.run(CarDatabaseApplication.class, args);
@@ -46,9 +56,13 @@ public class CarDatabaseApplication {
             ownerRepository.save(owner2);
 
 
+
             carRepository.save(new Car("Ford", "Mustang", "Red", "ADF-1121",2017,59000,owner1));
             carRepository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002",2015,25000,owner2));
             carRepository.save(new Car("Toyota", "Camry", "Silver", "KKO-0212",2020,30000,owner2));
+
+            userRepository.save(new User("user", "$2a$10$D8SY7/Y4opDezort4dqh6OplvfBRNnf/0M7agw3tT8rDCF6JHKnZG","USER"));
+//            userRepository.save(new User("admin", passwordEncoder.encode("admin"),"ADMIN"));
 
         };
     }

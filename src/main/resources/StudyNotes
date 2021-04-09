@@ -88,3 +88,21 @@ Spring Security
     The user of in-memory users is good in the development phase, but the real application should save the users in the database.
     To save the users to database, you have to create a user entity class and repository. Password shouldn't be saved to the database in plain text format.
     Spring security provides multiple hashing algorithms, such as BCrypt, that you can use to hash passwords.
+
+JWT(Json Web Token)
+    JWT is a compact way to implement authentication in modern web applications.
+    JWT is really small in size and can therefore be sent in the URL, in the POST parameter, or inside the header
+    It also contains all the necessary information pertaining to the user.
+
+    The Json web token contains three different parts, separated by dots:
+        1. The first part is the header that defines the type of the token and the hashing algorithm.
+        2.The second part is the payload that, typically, in the case of authentication, contains information pertaining to the user
+        3. The third part is the signature that is used to verify that the token hasn't been changed along the way.
+
+        Process
+            1. User sign-in using the username and password
+            2. The server authenticate the user and JWt token is crated and sent to user
+
+        After successfully authentication, the requests sent by the user should always contains the JWT token that was received in authentication
+
+        We will use Java JWT library, which is the JWT library for Java and Android. We have to add dependency to the pom.xml
