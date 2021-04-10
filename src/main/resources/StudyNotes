@@ -106,3 +106,15 @@ JWT(Json Web Token)
         After successfully authentication, the requests sent by the user should always contains the JWT token that was received in authentication
 
         We will use Java JWT library, which is the JWT library for Java and Android. We have to add dependency to the pom.xml
+
+Testing in Spring Boot
+    The Spring Boot test starter provides lots of handy libraries for testing such as JUnit, Mockito and AssertJ
+    By default Spring boot uses an in-memory database for testing. H2 can be used for testing if we add the dependency to the pom.xml
+    The scope defines that the H2 database will only be used for running test.
+    If we wanna use the default database for testing, we can use the @AutoConfigureTestDatabase annotation
+
+    Creating Unit Tests
+       For unit testing, we are using JUnit, which is a popular JAva-based unit testing library.
+       @RunWith annotation provides Spring's  ApplicationContext and gets beans injected into your test instance
+       @test annotation before the method specifies to Ju nit that the method can be run as a test case
+
