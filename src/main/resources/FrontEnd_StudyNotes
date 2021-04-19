@@ -377,3 +377,66 @@ React
                    console.log("Clean up function)
                 }
              }, [count]);
+
+
+  CONSUMING THE REST API WITH REACT
+
+    USING PROMISES
+        The traditional way to handle an asynchronous operation is to use callback functions for the success or the failure of the operation
+        one of the callback function is called, depending on the result of the call.
+
+        fucntion doAsyncCall(success,failure){
+            //do some api call
+            if(SUCCEED)
+                success(resp);
+            else
+                failure(err);
+        }
+        success(response){
+            //do something with response
+        }
+
+        failure(error){
+            //handle error
+        }
+
+        doAsyncCall(success, failure)
+
+
+    A PROMISE is an object that represents the result of an asynchronous operation. The use of promises simplifies the code when executing
+    asynchronous calls. Promises are non-blocking
+
+    A promise can be in one of three states:
+        Pending: initial state
+        Fulfilled: successful operation
+        Rejected: Failed operation
+
+    With promises, we can execute asynchronous calls if the API we are using supports promises.
+    In the next example, the asynchronous call is done and when the response is returned, the function inside THEN is executed and takes
+    response as an argument.
+
+    doAsyncCall()
+    .then(response => // Do something with the response)
+
+    You can chain many instances of THEN together, which means that you can run multiple asynchronous operations one after another.
+
+    doAsyncCall()
+        .then(response => // Get some result from the response)
+        .then(result => // Do something with the result)
+
+    For error handling, you can use try-catch with async-/await
+
+    doAsyncCall = async () => {
+        try {
+            const response = await fetch('http://someapi.com');
+            const result = await response.json();
+            // Do something with the result
+        }
+        catch(err) {
+            console.error(err);
+        }
+    }
+
+
+
+
