@@ -6,6 +6,13 @@ import com.coderman.cardatabase.domain.User;
 import com.coderman.cardatabase.repo.CarRepository;
 import com.coderman.cardatabase.repo.OwnerRepository;
 import com.coderman.cardatabase.repo.UserRepository;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -16,11 +23,12 @@ import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.PrintStream;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @SpringBootApplication
 public class CarDatabaseApplication {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CarDatabaseApplication.class);
 
     @Autowired
     private CarRepository carRepository;
@@ -34,6 +42,7 @@ public class CarDatabaseApplication {
 
 
     public static void main(String[] args) {
+
 //        SpringApplication.run(CarDatabaseApplication.class, args);
         SpringApplication springApplication = new SpringApplication(CarDatabaseApplication.class);
         springApplication.setBanner(new Banner() {
@@ -51,9 +60,21 @@ public class CarDatabaseApplication {
         return args -> {
 
             Owner owner1 = new Owner("Beck", "Ars");
+            Owner owner3 = new Owner("Beck", "Ars");
             Owner owner2 = new Owner("Moon", "Koo");
+            Owner owner4 = new Owner("Moon", "Koo");
+            Owner owner5 = new Owner("Moon", "Koo");
+            Owner owner6 = new Owner("Moon", "Koo");
+            Owner owner7 = new Owner("Moon", "Koo");
+            Owner owner8 = new Owner("Moon", "Koo");
             ownerRepository.save(owner1);
             ownerRepository.save(owner2);
+            ownerRepository.save(owner3);
+            ownerRepository.save(owner4);
+            ownerRepository.save(owner5);
+            ownerRepository.save(owner6);
+            ownerRepository.save(owner7);
+            ownerRepository.save(owner8);
 
 
 

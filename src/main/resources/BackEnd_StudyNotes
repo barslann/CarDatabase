@@ -28,7 +28,7 @@ DI in Spring Boot
     This beans can be injected using an @Autowired annotation
 
 
-    Java provides @Resource anotation that can be used to inject resources!
+    Java provides @Resource annotation that can be used to inject resources!
 
 
 Basics of ORM, JPA, and Hibernate
@@ -41,7 +41,22 @@ Basics of ORM, JPA, and Hibernate
     The fields of an entity class present the columns of the database tables.
 
 
-    Hibernate is the most popular JAVA-based JPA implementation, adn is used in Spring boot as a default.
+    Hibernate is the most popular JAVA-based JPA implementation, and is used in Spring boot as a default.
+
+    RELATIONAL-SQL--As these databases are not limited to a table structure, they are called NoSQL.
+    This type of database management system is considered document-oriented.
+    Non-structured data such as articles, photos, videos, and others are collected in a single document.
+    Data is simple to query but isn’t always classified into rows and columns as in a relational database.
+    Non-relational or NoSQL databases are usually horizontally scaled by adding servers.
+
+    Since NoSQL databases allow for reserving various data types together and scaling it by growing around multiple servers,
+    their never-decreasing popularity is understandable. Also, building an MVP it’s a great option for startups with sprint-based Agile development.
+    NoSQL requires no pre-deployment preparations, making quick, time-lag-free updates to the data structure easier.
+
+    MongoDB
+    Redis-it uses key-value pairs-can also be used as a cache
+    Cassandra-allows for managing large data volumes by replicating it into multiple nodes
+    Elasticsearch- document-oriented
 
 Basics of REST
     Representational State Transfer(REST) is an architectural style for creating web services. REST is not standard but it defines a set of constraints defined by Roy Fielding.
@@ -55,7 +70,7 @@ Basics of REST
 
     The uniform interface is an important constraint and it stipulates that every REST architecture should have the following elements.
         1. Identification of Resources -> There are resources with their unique identifiers, for example, URIs in web based REST services.
-        REST resources should expose easily understood directory structure URIs.Therefore, a good resource namin strattegy is important.
+        REST resources should expose easily understood directory structure URIs.Therefore, a good resource naming strategy is important.
 
         2. Resource manipulation through representation -> When making a request to a resource, the server responds with a representation of the resource.
         Typically, the format of the representation is JSON or XML
@@ -65,7 +80,7 @@ Basics of REST
         4. Hypermedia and the Engine of Application State(HATEOAS): Responses can contain links to other areas of service.
 
 Spring Data REST
-    It offers and easy and fast way to implement RESTful web services with Soring
+    It offers and easy and fast way to implement RESTful web services with Spring
     By default, Spring Data REST finds all public repositories from the application and creates RESTful web services for your entities automatically.
 
     We can define the endpoint of service in our applicaton.properties file as follows:

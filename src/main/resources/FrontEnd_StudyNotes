@@ -1,0 +1,379 @@
+Node.js
+    Node.js is an open source, JS based server side environment.
+React
+    React is a JS library for user interfaces.
+    React is component based and the components are independent and reusable.
+    The components are the basic building blocks of React
+
+    The important thing to understand with React is that the dataflow is going from the parent component to the child
+
+    VDOM(Virtual DOM)
+        React uses vdom for selective re-rendering of the UI, which makes it more cost effective.
+        The VDOM is a lightweight copy of the DOM and manipulation of the VDOM is much faster than it is with the real DOM.
+        After the VDOM is updated, React compares it to a snapshot that was taken from the VDOM before updates were run.
+        After the comparison, React will know which parts have been changed, and only these parts will be updated to the real DOM.
+
+    Component
+        class Hello extends React.Component{
+            render(){
+                return <h1> Hello </h1>
+            }
+        }
+        The component that was implemented using the class contains the required render() method.This method shows and updates
+        rendered output of the component.Component name should start with a capital letter.
+
+
+
+        *** render method will return one element so to put more then one element we can use a div as a wrapper
+
+        class Hello extends React.Component{
+            render(){
+                return (
+                <div>
+                    <h1> Hello </h1>
+                    <h1> World </h1>
+                </div>
+                );
+            }
+        }
+
+        OR we can use FRAGMENT, which look like empty JSX tags.
+        class Hello extends React.Component{
+                    render(){
+                        return (
+                        <>
+                            <h1> Hello </h1>
+                            <h1> World </h1>
+                        </>
+                        );
+                    }
+                }
+
+        INDEX.JS FILE
+
+        At the beginning of the index.js file, there are import statements that load components and assets to our file.
+        For example,
+            import ReactDOM from 'react-dom'; -> this line imports the react-dom package from the node_modules folder.
+
+        To render the React component to the DOM, we can use the render method from the react-dom package.
+            ReactDOM.render(<App/>, document.getElementById('root');
+                The first argument is the component that will rendered, and the second argument is the element or container
+                    in which the component will be rendered
+
+        APP.JS FILE
+            import also applies to assets, such as images and style sheets.
+            At the end of the source code, there is an export statement that exports the component, and it can be made available
+            to other components by using import. There can be ONLY ONE export per file, but there can be multiple named exports
+
+                export default React // default export
+                export {Component} // named export
+
+                import React from 'react' // import default value
+                import {Component} from 'react' // import named value
+
+
+
+        ES6
+            EcmaScript is a standardized scripting language, and JS is one implementation of it.
+
+            Some important features released in ES6
+                1.Constants
+                    Constants or immutable variables can be defined by using a CONST keyword
+                    const PI = 3.14;
+
+                    the scope of the const is block scoped, whihc is the same as the scope for let.
+                    This means that the const variable can only be used inside the block in which it is defined.
+                    Block is the area between curly brackets {}
+
+                2. Arrow functions
+                    The traditional way of defining a function in JS is by using a function keyword.
+
+                    function hello(greeting){
+                        return greeting;
+                    }
+
+                    But, when we use array function, the function looks as follows:
+
+                        One Argument example
+
+                            const hello = greeting => {greeting}
+
+                            // Function call
+                            hello('Hello world') -> return Hello world
+
+                        More than One Argument
+
+                            const calcSum = (x,y) => {x+y}
+
+                            // Function call
+                            calcSum(2,3) -> return 5
+
+                            If the function  body is an expression, then you dont need to use RETURN keyword.
+                            The expression is always implicitly returned from the funtion.
+
+                        No argument
+                            However, if the function doesnt have any arguments, then you should use the following syntax
+                                () => {..}
+
+                3.Template Literals
+                    Template literals can be used to concatenate strings. The traditional way to concatenate strings is to use the + operator
+                    var person = {firsName: 'John', lastName: 'Johnson'}
+                    var greeting = "Hello" + ${person.firstName} + " " + ${person.lastName};
+
+                    with the template literals,
+                        var greeting = `Hello ${person.firstName}  ${person.lastName}`;
+
+        Classes and Inheritance
+            The keyword for defining classes is CLASS. The class can have fields, constructor, and class methods.
+
+            class Person{
+                constructor(firstName, lastName){
+                    this.firstName = firstName;
+                    this.lastName = lastName;
+                }
+            }
+
+            Inheritance is performed with an extends keyword.
+
+            class Employee extends Person{
+                constructor(firstName, lastName, title, salary){
+                   super(firstName, lastName)
+                   this.title = title;
+                   this.salary = salary;
+                }
+            }
+
+         BABEL
+            Although ES6 is already quite old, it is only partially supported by modern web browsers.
+            Babel is a JS compiler that is used to compile ES6 to an older version that is compatible with all browsers.
+
+         JSX and styling
+            JSX is the syntax extension for JS. It is not mandatory to use JSX with React but there are some benefits that
+            make development easier. JSx,for example, prevents injection attacks because all values are escaped in the JSX
+            before they are rendered.
+
+            The most useful feature is that you can embed JS expressions in the JSX by wrapping it with curly brackets.
+
+            JSX is compiled to the React.createElement() calls by Babel.
+
+            You can use both internal or external styling with the React JSX elements.
+                <div style= {{height: 20, width: 200}}> Hello </div>
+
+                or
+
+
+                const divStyle = {
+                    color: 'red',
+                    height: 30
+                }
+
+                const Mycomponent = () => (
+                    <div style= {divStyle} >Hello </div>
+                )
+
+         Props and the State
+            Props and the state are the input data for rendering the component. Both props and the state are actually JS objects
+            and the component is re-rendered when the props or the state change.
+
+            The props are immutable, so the component cannot change the props.
+            The props are received from the parent component. The component can access the props through this.props object
+
+                class Hello extends React.Component{
+                    render(){
+                        return <h1> Hello {this.props.user} </h1>;
+                    }
+                }
+
+                The parent component can send props to the Hello component in the following way
+                    <Hello user= "John" />
+
+
+            The state can be changed inside the component. The initial value of the state is given in the component's constructor.
+            The state can be accessed by using the this.state object.
+            The scope of the state is the component, so it cannot be used outside the component in which it is defined.
+
+            class Hello extends React.Component{
+                constructor(props){
+                    super(props)
+                    this.state = {user: 'John'}
+                }
+                render(){
+                    return <h1> Hello {this.state.user} </h1>;
+                }
+            }
+
+
+            The value of the state is changed using the setState method
+                this.setState( { user : 'Beck' });
+
+            You should never update the state by using the = operator because then Ract won't re-render the component.
+            The only way to change the state is to use setState method, which triggers re-rendering.
+
+
+            The setState method is asynchronous, and so you cannot be sure when the state will be updated.
+            The setState method has a callback function that is executed when  the state has been updated
+
+            The components that only have the props are called STATELESS components.
+            The components that have both stare and props are called STATEFUL components.
+
+            If you are updating the state values that depend on the current state, you should pass an update function to the setState() method
+            instead of the object. A common way of demonstrating this situation is the counter example
+
+            // This solution might not work correctly
+            incrementCounter = () => {
+                this.setState( {count: this.state.count+1})
+            }
+
+            // The correct way
+            incrementCounter = () => {
+                this.setState((prevState) =>{
+                    return {count: prevState.count+1}
+                });
+            }
+
+
+        Component LifeCycle
+            The React component has many life cycle methods that you can overrid. These methods are executed at certain  phases  of the component's life cycles
+            The names of the life cycle methods are logical and you can almost guess when they are going to be executed.
+            The life cycle methods that have will prefix are executed before an action is performed. and the methods with a did prefix
+            are executed right after an action is performed.
+
+
+            Mounting is one phase of the component life cycle. It is the moment when the component is created and inserted into the DOM.
+            Two life cycle methods that we have already covered are executed when the component mounts constructor() and render()
+
+            A useful method in the mounting phase is componentDidMount() which is called the component has been mounted.
+            This method is suitable for calling some REST APIs to get data,for example.
+
+                we first set the inital value of user to John. Then, when the component is mounted, we change the value to Jim
+
+                class Hello extends React.Component{
+                    constructor(props){
+                        super(props)
+                        this.state = {user : 'John'}
+                    }
+
+                    componentDidMount(){
+                        this.setState({user: 'Beck'})
+                    }
+
+                    render(){
+                        return <h1> Hello {this.state.user} </h1>
+                    }
+                }
+
+
+            There is also a componentWillMount() life cycle method that is called before the component is mounted, but Facebook
+            recommends that you do not use this because it might be used for internal development purposes.
+
+            A shouldComponentUpdate() method is called when the state or props have been updated and before the component is rendered.
+            The method gets new props as first argument and a new state as a second argument, and it returns the Boolean value
+            If the returned value is true, the component will be re-rendered, otherwise it wont be re-rendered.
+            This method allows you to avoid useless renders and improves performance.
+
+
+            A componentWillUnmount() life cycle method is called before the component is removed from the DOM.
+            This is a good point at which to clean resources, clear times, or cancel request.
+
+
+            A componentDidCCatch() catches JS errors in their child component and also logs these errors and show fallback in the UI
+
+ React Hooks
+    React hooks let you use the state in your components without using a class. You can write your components
+    by using ES6 arrow functions.
+
+    The hook function that lets you set a state valur is called useState. It takes one argument, which is the initial value of the the state.
+
+    The following example code creates a state variable called count, and the initial value is zero.
+
+    count[count, setCount] = useState(0);  -> the value of the state can now be updated by using the setCount function.
+
+
+    import React, {useState} from 'react';
+
+    const Counter = () => {
+        const [count, setCount] = useState(0);
+
+        return (
+            <div>
+                <p>{count}</p>
+                <button> onClick = {() => setCount(count+1)}>Increment</button>
+            </div>
+        );
+
+    };
+
+    export default Counter;
+
+    if we have multiple states, we can call the useState function multiple times
+        const[firstName, setFirstName] = useState('John')
+        const[lastName, setLastName] = useState('Johnson')
+
+        now we can update states using the setFirstName and setLastName functions
+            setFirstName('Jim');
+            setLastName('Palmer');
+
+    we can also define the state using an object
+        const [name, setName] = useState({firstName: 'John', lastName: 'Johnson'})
+
+       update both firstName and lastName using setState function
+        setName({firstName: 'Jim', lastName: 'Palmer'})
+
+    Spread Syntax
+        setName({...name, firstName:'Jim'})
+
+
+ *** When using functions, we dont have class component life cycle methods. Instead, there is a hook called useEffect that we can use to get
+ the componentDidMount, componentDidUpdate and ComponentWillMount mechanism. When used, the useEffect hook runs after every render.
+
+
+ // When the button  is pressed, the count state value increases and the UI is re-rendered.
+ // After each render, useEffect is invoked and we can see the value of count in the console.
+
+ import React, {useState,useEffect} from 'react';
+ const Counter = () => {
+         const [count, setCount] = useState(0);
+
+
+         //Called after every render
+         useEffect( () => {
+            console.log("Counter value is now" + counter)
+         });
+
+         return (
+             <div>
+                 <p>{count}</p>
+                 <button> onClick = {() => setCount(count+1)}>Increment</button>
+             </div>
+         );
+
+     };
+
+
+    ** The useEffect hook has a second optional argument that you can use to prevent it from running in every render.
+    in the following code, we are stipulating that if the count state value is changed(meaning that the previous and current values differ)
+    the useEffect function will be invoked. We can also define multiple states in the second argument,. If any of these state values are changed
+    the useEffect will be invoked.
+
+             //Called after every render
+                 useEffect( () => {
+                    console.log("Counter value is now" + counter)
+             }, [count]);
+
+    if you pass an empty array as a second argument, the useEffect function runs only after the first render.
+
+                //Called after first render
+                     useEffect( () => {
+                        console.log("Counter value is now" + counter)
+                 }, []);
+
+    The use effect method can also return a function that will run before every effect.
+    with the following mechanism, you can clean up each effect from the previous render before running the effect next time
+
+            useEffect( () => {
+                console.log("Counter value is now" + counter)
+
+                return () => {
+                   console.log("Clean up function)
+                }
+             }, [count]);
